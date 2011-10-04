@@ -1,0 +1,65 @@
+* Tue Sep 06 2011 Marko Saukko <marko.saukko@cybercom.com> - 1.6.15
+- Updating to latest upstream version 1.6.15.
+- Added zypper-log package.
+
+* Mon Aug  1 2011 Zhang Qiang <qiang.z.zhang@intel.com> - 1.6.10
+- Add 0002-Support-fuzzy-search-file.patch to support fuzzy 
+  search files, resolved FEA#14836
+
+* Tue Jul 05 2011 Anas Nashif <anas.nashif@intel.com> - 1.6.10
+- Update to 1.6.10
+
+* Tue Apr 19 2011 Zhang Qiang <qiang.z.zhang@intel.com> - 1.5.3
+- upgrade to 1.5.3.
+
+* Wed Dec 22 2010 Zhang Qiang <qiang.z.zhang@intel.com> - 1.5.2
+- upgrade to 1.5.2. fix BMC#11604
+
+* Wed Dec 15 2010 Zhang Qiang <qiang.z.zhang@intel.com> - 1.4.7
+- Update MeeGo-support-search-file.patch to search file with full
+  path. Feature #11130.
+
+* Fri Dec 10 2010 Zhang Qiang <qiang.z.zhang@intel.com> - 1.4.7
+- Add MeeGo-support-search-file.patch to support search files
+  Feature 11130.
+
+* Tue Sep 28 2010 Zhang Qiang <qiang.z.zhang@intel.com> - 1.4.7
+- Add MeeGo-remove-multiversionInstall.patch to remove the multi-
+  version install solvable from the no-install list. Fix BMC#1595
+
+* Sat Sep 04 2010 Anas Nashif <nashif@linux.intel.com> - 1.4.7
+- Use spectacle
+
+* Mon Aug 23 2010 Zhang Qiang <qiang.z.zhang@intel.com> - 1.4.7
+- Update to 1.4.7
+
+* Thu Jun 17 2010 Anas Nashif <anas.nashif@intel.com> - 1.4.4
+- Update to 1.4.4
+
+* Sun Mar 21 2010 Anas Nashif <anas.nashif@intel.com> - 1.4.1
+- Updaye to 1.4.1
+
+* Sat Mar 06 2010 Anas Nashif <anas.nashif@intel.com> - 1.4.0
+- Update to 1.4.0
+- Remove upstreamed patches
+
+* Sat Feb 20 2010 Anas Nashif <anas.nashif@intel.com> - 1.2.16
+- Fixed --type option handling (Patch from upstream)
+
+* Fri Feb 19 2010 Anas Nashif <anas.nashif@intel.com> - 1.2.16
+- Remove obsolete patch dealing with uservisible variable in patterns
+
+* Wed Feb 17 2010 Anas Nashif <anas.nashif@intel.com> - 1.2.16
+- Update to 1.2.16
+
+* Tue Jan 19 2010 Peter Zhu <peter.j.zhu@intel.com> - 1.2.8
+- Update to 1.2.8
+
+* Tue Sep 29 2009 Anas Nashif <anas.nashif@intel.com> - 1.2.4
+- Update to 1.2.4
+
+* Mon Aug 17 2009 Anas Nashif <anas.nashif@intel.com> - 1.2.2
+- Remove unneeded build requirements
+
+* Fri Aug 14 2009 Anas Nashif <anas.nashif@intel.com> - 1.2.2
+- Initial import into Moblin

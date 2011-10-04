@@ -1,0 +1,52 @@
+Name: zypper
+Summary: Command line software manager using libzypp
+Version: 1.6.15
+Release: 1
+Group: System/Packages
+License: GPL v2 or later
+URL: http://en.opensuse.org/Zypper
+Sources:
+    - "%{name}-%{version}.tar.bz2"
+    - "%{name}-rpmlintrc"
+Patches:
+#    - 0001-multi-ver-package-should-be-erased-from-notupdated-l.patch
+    - 0001-Support-searching-file-with-full-path.patch
+    - 0002-Support-fuzzy-search-file.patch
+Description: |
+    Zypper is a command line tool for managing software. It can be used to add
+    package repositories, search for packages, install, remove, or update packages,
+    install patches, hardware drivers, verify dependencies, and more.
+    
+    Zypper can be used interactively or non-interactively by user, from scripts,
+    or front-ends. 
+Requires:
+    - procps
+PkgConfigBR:
+    - libzypp
+    - augeas
+PkgBR:
+    - boost-devel >= 1.33.1
+    - gettext-devel >= 0.15
+    - readline-devel >= 5.1
+    - cmake >= 2.4.6
+    - gcc-c++ >= 4.1
+Builder: cmake
+LocaleName: zypper
+ConfigOptions:
+    - -DCMAKE_INSTALL_PREFIX=/usr
+    - -DSYSCONFDIR=%{_sysconfdir} 
+    - -DMANDIR=%{_mandir}
+    - -DCMAKE_VERBOSE_MAKEFILE=TRUE
+    - -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags}"
+    - -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}"
+    - -DCMAKE_BUILD_TYPE=Release
+    - -DUSE_TRANSLATION_SET=${TRANSLATION_SET:-zypper}
+
+SubPackages:
+    - Name: log
+      Summary: CLI for accessing the zypper logfile
+      Group: System/Packages
+      Description: |
+        CLI for accessing the zypper logfile.
+      Requires: 
+        - python-argparse

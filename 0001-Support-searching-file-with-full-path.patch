@@ -1,0 +1,31 @@
+From 6ac2ad8dd4f533c4d2e01386ea7bf23796a391c5 Mon Sep 17 00:00:00 2001
+From: Zhang Qiang <qiang.z.zhang@intel.com>
+Date: Wed, 15 Dec 2010 09:56:42 +0800
+Subject: [PATCH] Support searching file with full path
+
+This patch enable zypper searching file with full path, which is the
+function as 'yum provides'.
+---
+ src/Zypper.cc |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/src/Zypper.cc b/src/Zypper.cc
+index a43ec47..817b10e 100644
+--- a/src/Zypper.cc
++++ b/src/Zypper.cc
+@@ -3646,6 +3646,12 @@ void Zypper::doCommand()
+       query.addString(*it);
+       if (!query.matchGlob() && it->find_first_of("?*") != string::npos)
+         query.setMatchGlob();
++      if (it->substr(0, 1) == "/")
++      {
++        query.addAttribute(sat::SolvAttr::filelist);
++        query.setFilesMatchFullPath(true);
++        query.setMatchExact();
++      }
+     }
+     query.addAttribute(sat::SolvAttr::name);
+     if (cOpts().count("search-descriptions"))
+-- 
+1.7.2.2
+

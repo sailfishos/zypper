@@ -1,0 +1,17 @@
+diff -uNr zypper-1.6.10/src/Zypper.cc zypper-1.6.10.new/src/Zypper.cc
+--- zypper-1.6.10/src/Zypper.cc	2011-08-01 14:28:49.092443044 +0800
++++ zypper-1.6.10.new/src/Zypper.cc	2011-08-01 14:31:20.629442992 +0800
+@@ -3694,11 +3694,9 @@
+       if (!query.matchGlob() && it->find_first_of("?*") != string::npos)
+         query.setMatchGlob();
+       if (it->substr(0, 1) == "/")
+-      {
+-        query.addAttribute(sat::SolvAttr::filelist);
+         query.setFilesMatchFullPath(true);
+-        query.setMatchExact();
+-      }
++      query.addAttribute(sat::SolvAttr::filelist);
++      query.setMatchExact();
+     }
+     query.addAttribute(sat::SolvAttr::name);
+     if (cOpts().count("search-descriptions"))

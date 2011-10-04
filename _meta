@@ -1,0 +1,19 @@
+<package project="Mer:Trunk:Base" name="zypper">
+  <title>Command line software manager using libzypp</title>
+  <description>Zypper is a command line tool for managing software. It can be used to add
+package repositories, search for packages, install, remove, or update packages,
+install patches, hardware drivers, verify dependencies, and more.
+
+Zypper can be used interactively or non-interactively by user, from scripts,
+or front-ends. 
+
+Authors:
+--------
+    Jan Kupec &lt;jkupec@suse.cz&gt;
+    Duncan Mac-Vicar &lt;dmacvicar@suse.de&gt;
+    Martin Vidner &lt;mvidner@suse.cz&gt;
+    Josef Reidinger &lt;jreidinger@suse.cz&gt;
+
+</description>
+  <url>http://en.opensuse.org/Zypper</url>
+</package>
