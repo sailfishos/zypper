@@ -1,6 +1,6 @@
 Name: zypper
 Summary: Command line software manager using libzypp
-Version: 1.6.15
+Version: 1.7.0
 Release: 1
 Group: System/Packages
 License: GPL v2 or later
@@ -9,9 +9,8 @@ Sources:
     - "%{name}-%{version}.tar.bz2"
     - "%{name}-rpmlintrc"
 Patches:
-#    - 0001-multi-ver-package-should-be-erased-from-notupdated-l.patch
-    - 0001-Support-searching-file-with-full-path.patch
-    - 0002-Support-fuzzy-search-file.patch
+    - zypper-libxml2.patch
+    - zypper-1.7.0-static-zypper_lib.patch
 Description: |
     Zypper is a command line tool for managing software. It can be used to add
     package repositories, search for packages, install, remove, or update packages,
@@ -33,7 +32,7 @@ PkgBR:
 Builder: cmake
 LocaleName: zypper
 ConfigOptions:
-    - -DCMAKE_INSTALL_PREFIX=/usr
+    - -DCMAKE_INSTALL_PREFIX=%{_prefix}
     - -DSYSCONFDIR=%{_sysconfdir} 
     - -DMANDIR=%{_mandir}
     - -DCMAKE_VERBOSE_MAKEFILE=TRUE
@@ -50,3 +49,13 @@ SubPackages:
         CLI for accessing the zypper logfile.
       Requires: 
         - python-argparse
+    - Name: aptitude
+      Summary: aptitude compatibility with zypper
+      Requires:
+        - perl
+      BuildArch: noarch
+      Group: System/Packages
+      Description: |
+        %{summary}.
+      Files:
+        - "%{_bindir}/aptitude"
