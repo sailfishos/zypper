@@ -1,3 +1,7 @@
+* Fri Sep 21 2012 Marko Saukko <marko.saukko@jollamobile.com> - 1.8.3
+- Update to version 1.8.3
+- Dropped upstreamed patch zypper-1.7.0-static-zypper_lib.patch
+
 * Mon Apr 09 2012 Marko Saukko <sage@merproject.org> - 1.7.0
 - Update to version 1.7.0, Part of MER#76
 - Added zypper-aptitude package for aptitude compatibility.

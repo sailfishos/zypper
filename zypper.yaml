@@ -1,16 +1,16 @@
 Name: zypper
 Summary: Command line software manager using libzypp
-Version: 1.7.0
+Version: 1.8.3
 Release: 1
 Group: System/Packages
 License: GPL v2 or later
 URL: http://en.opensuse.org/Zypper
 Sources:
+    # https://build.opensuse.org/package/files?package=zypper&project=openSUSE%3AFactory
     - "%{name}-%{version}.tar.bz2"
     - "%{name}-rpmlintrc"
 Patches:
     - zypper-libxml2.patch
-    - zypper-1.7.0-static-zypper_lib.patch
 Description: |
     Zypper is a command line tool for managing software. It can be used to add
     package repositories, search for packages, install, remove, or update packages,
@@ -21,7 +21,7 @@ Description: |
 Requires:
     - procps
 PkgConfigBR:
-    - libzypp
+    - libzypp >= 12.2.0
     - augeas
 PkgBR:
     - boost-devel >= 1.33.1
