@@ -1,0 +1,25 @@
+From b7c0cb34bc03fd92cf9a36780ff34890261c5e24 Mon Sep 17 00:00:00 2001
+From: Marko Saukko <marko.saukko@gmail.com>
+Date: Sun, 1 Apr 2012 11:52:22 +0300
+Subject: [PATCH] libxml2 include path fix.
+
+---
+ src/CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 81b774d..e768dad 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -5,7 +5,7 @@ ADD_DEFINITIONS (
+ 
+ MESSAGE ( "** Locale dir is ${INSTALL_PREFIX}/share/locale" )
+ 
+-INCLUDE_DIRECTORIES(${ZYPPER_SOURCE_DIR}/src)
++INCLUDE_DIRECTORIES(${ZYPPER_SOURCE_DIR}/src /usr/include/libxml2/)
+ 
+ SET (zypper_HEADERS
+   Zypper.h
+-- 
+1.7.7.6
+
