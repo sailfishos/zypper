@@ -3,7 +3,7 @@ Summary:    Command line software manager using libzypp
 Version:        1.11.22
 Release:    1
 Group:      System/Packages
-License:    GPL v2 or later
+License:    GPLv2+
 URL:        http://en.opensuse.org/Zypper
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
@@ -29,7 +29,6 @@ or front-ends.
 
 %package log
 Summary:    CLI for accessing the zypper logfile
-Group:      System/Packages
 Requires:   %{name} = %{version}-%{release}
 Requires:   python-argparse
 
@@ -39,7 +38,6 @@ CLI for accessing the zypper logfile.
 
 %package aptitude
 Summary:    aptitude compatibility with zypper
-Group:      System/Packages
 BuildArch:    noarch
 Requires:   %{name} = %{version}-%{release}
 Requires:   perl
