@@ -48,15 +48,13 @@ Requires:   perl
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
-cd %{name}
 # zypper-libxml2.patch
 %patch0 -p1
 
 %build
 
-cd %{name}
 %cmake .  \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DSYSCONFDIR=%{_sysconfdir} \
@@ -71,14 +69,13 @@ make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
-cd %{name}
 %make_install
 %{__install} -d -m755 %buildroot%_var/log
 touch %buildroot%_var/log/zypper.log
 
 %find_lang zypper
 
-%files -f zypper/zypper.lang
+%files -f zypper.lang
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/zypp/zypper.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypper.lr
