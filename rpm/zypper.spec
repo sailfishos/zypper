@@ -1,6 +1,6 @@
 Name:       zypper
 Summary:    Command line software manager using libzypp
-Version:        1.11.22
+Version:        1.13.9
 Release:    1
 Group:      System/Packages
 License:    GPLv2+
@@ -11,7 +11,8 @@ Patch0:     zypper-libxml2.patch
 Requires:   procps
 BuildRequires:  pkgconfig(libzypp) >= 12.2.0
 BuildRequires:  pkgconfig(augeas)
-BuildRequires:  boost-devel >= 1.33.1
+# needs boost 1.53+ for string_ref utility
+BuildRequires:  boost-devel  >= 1.53.0 
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  readline-devel >= 5.1
 BuildRequires:  cmake >= 2.4.6
@@ -105,3 +106,10 @@ touch %buildroot%_var/log/zypper.log
 %files aptitude
 %defattr(-,root,root,-)
 %{_bindir}/aptitude
+%{_bindir}/apt-get
+%config %{_sysconfdir}/zypp/apt-packagemap.d/10-packagemap.pm
+%config %{_sysconfdir}/zypp/apt-packagemap.d/50-libperl.pm
+%config %{_sysconfdir}/zypp/apt-packagemap.d/50-libruby.pm
+%config %{_sysconfdir}/zypp/apt-packagemap.d/50-python.pm
+%config %{_sysconfdir}/zypp/apt-packagemap.d/90-devel.pm
+
