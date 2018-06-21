@@ -1,23 +1,23 @@
 Name:       zypper
 Summary:    Command line software manager using libzypp
-Version:        1.13.9
+Version:        1.14.6
 Release:    1
 Group:      System/Packages
 License:    GPLv2+
 URL:        http://en.opensuse.org/Zypper
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
-Patch0:     zypper-libxml2.patch
+Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
 Requires:   procps
-BuildRequires:  pkgconfig(libzypp) >= 12.2.0
-BuildRequires:  pkgconfig(augeas)
-# needs boost 1.53+ for string_ref utility
-BuildRequires:  boost-devel  >= 1.53.0 
+BuildRequires:  pkgconfig(libzypp) >= 17.2.2
+BuildRequires:  pkgconfig(augeas) >= 0.5.0
+BuildRequires:  boost-devel  >= 1.33.1
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  readline-devel >= 5.1
 BuildRequires:  cmake >= 2.4.6
-BuildRequires:  gcc-c++ >= 4.1
-BuildRequires:  cmake
+BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  cmake >= 2.4.6
+BuildRequires:  libxml2-devel
 
 %description
 Zypper is a command line tool for managing software. It can be used to add
@@ -59,14 +59,13 @@ Requires:   perl
 %cmake .  \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DSYSCONFDIR=%{_sysconfdir} \
-    -DMANDIR=%{_mandir} \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags}" \
     -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_TRANSLATION_SET=${TRANSLATION_SET:-zypper}
 
-make %{?jobs:-j%jobs}
+make %{?_smp_mflags}
 
 %install
 rm -rf %{buildroot}
@@ -89,24 +88,22 @@ touch %buildroot%_var/log/zypper.log
 %{_datadir}/zypper/zypper.aug
 %dir %{_datadir}/zypper/xml
 %{_datadir}/zypper/xml/xmlout.rnc
-%doc %{_mandir}/man8/zypper.8*
-%doc %{_mandir}/man8/zypp-refresh.8*
 %doc %dir %{_datadir}/doc/packages/zypper
 %doc %{_datadir}/doc/packages/zypper/COPYING
 %doc %{_datadir}/doc/packages/zypper/HACKING
 # declare ownership of the log file but prevent
 # it from being erased by rpm -e
-%ghost %config(noreplace) %{_var}/log/zypper.log
+%ghost %config(noreplace) %attr (640,root,root) %{_var}/log/zypper.log
 
 %files log
 %defattr(-,root,root,-)
 %{_sbindir}/zypper-log
-%doc %{_mandir}/man8/zypper-log.8*
 
 %files aptitude
 %defattr(-,root,root,-)
 %{_bindir}/aptitude
 %{_bindir}/apt-get
+%{_bindir}/apt
 %config %{_sysconfdir}/zypp/apt-packagemap.d/10-packagemap.pm
 %config %{_sysconfdir}/zypp/apt-packagemap.d/50-libperl.pm
 %config %{_sysconfdir}/zypp/apt-packagemap.d/50-libruby.pm

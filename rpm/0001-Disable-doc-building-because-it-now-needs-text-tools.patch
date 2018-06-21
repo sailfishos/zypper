@@ -1,0 +1,17 @@
+From 7b2568250bc4f99081a3c32f3019a6ab20cd13eb Mon, 25 Jun 2018 11:45:18 +0200
+From: Andrew Branson <andrew.branson@jollamobile.com>
+Date: Mon, 25 Jun 2018 11:44:38 +0200
+Subject: [PATCH] Disable doc building because it now needs text tools (a2x or asciidoctor) which we don't provide.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 65b3f2d..65e201d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,7 +65,6 @@
+ ENDMACRO(ADD_TESTS)
+ 
+ ADD_SUBDIRECTORY( src )
+-ADD_SUBDIRECTORY( doc )
+ ADD_SUBDIRECTORY( tests EXCLUDE_FROM_ALL )
+ 
+ IF ( ENABLE_BUILD_TRANS )
