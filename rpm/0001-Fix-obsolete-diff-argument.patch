@@ -1,0 +1,23 @@
+From c9257d571a5722e2b5b8f4e23b12bddfa4d7bc0d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomi=20Lepp=C3=A4nen?= <tomi.leppanen@jolla.com>
+Date: Tue, 22 Jan 2019 16:04:26 +0200
+Subject: [PATCH] Fix obsolete diff argument
+
+This was also not compatible with busybox diff.
+---
+ po/PotfileDiff.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/po/PotfileDiff.sh b/po/PotfileDiff.sh
+index 04a249c0..ee72c5df 100755
+--- a/po/PotfileDiff.sh
++++ b/po/PotfileDiff.sh
+@@ -10,4 +10,4 @@ extract "$1" >"$OLDTMP"
+ extract "$2" >"$NEWTMP"
+ 
+ shift 2	# additional args for diff
+-diff -u0 "$@" "$OLDTMP" "$NEWTMP"
++diff -U 0 "$@" "$OLDTMP" "$NEWTMP"
+-- 
+2.20.1
+
