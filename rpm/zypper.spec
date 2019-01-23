@@ -8,6 +8,7 @@ URL:        http://en.opensuse.org/Zypper
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
+Patch1:     0001-Fix-obsolete-diff-argument.patch
 Requires:   procps
 BuildRequires:  pkgconfig(libzypp) >= 17.2.2
 BuildRequires:  pkgconfig(augeas) >= 0.5.0
@@ -47,12 +48,13 @@ Requires:   perl
 %{summary}.
 
 
-
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
-# zypper-libxml2.patch
+# 0001-Disable-doc-building-because-it-now-needs-text-tools.patch
 %patch0 -p1
+# 0001-Fix-obsolete-diff-argument.patch
+%patch1 -p1
 
 %build
 
@@ -76,6 +78,7 @@ touch %buildroot%_var/log/zypper.log
 %find_lang zypper
 
 %files -f zypper.lang
+%license COPYING
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/zypp/zypper.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypper.lr
@@ -88,9 +91,6 @@ touch %buildroot%_var/log/zypper.log
 %{_datadir}/zypper/zypper.aug
 %dir %{_datadir}/zypper/xml
 %{_datadir}/zypper/xml/xmlout.rnc
-%doc %dir %{_datadir}/doc/packages/zypper
-%doc %{_datadir}/doc/packages/zypper/COPYING
-%doc %{_datadir}/doc/packages/zypper/HACKING
 # declare ownership of the log file but prevent
 # it from being erased by rpm -e
 %ghost %config(noreplace) %attr (640,root,root) %{_var}/log/zypper.log
