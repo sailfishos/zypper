@@ -75,6 +75,8 @@ rm -rf %{buildroot}
 %{__install} -d -m755 %buildroot%_var/log
 touch %buildroot%_var/log/zypper.log
 
+rm -rf %{buildroot}%{_docdir}/packages
+
 %find_lang zypper
 
 %files -f zypper.lang
