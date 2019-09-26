@@ -82,9 +82,9 @@ rm -rf %{buildroot}%{_docdir}/packages
 %files -f zypper.lang
 %license COPYING
 %defattr(-,root,root,-)
-%config(noreplace) %{_sysconfdir}/zypp/zypper.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/zypper.lr
-%config(noreplace) %{_sysconfdir}/logrotate.d/zypp-refresh.lr
+%config %{_sysconfdir}/zypp/zypper.conf
+%config %{_sysconfdir}/logrotate.d/zypper.lr
+%config %{_sysconfdir}/logrotate.d/zypp-refresh.lr
 %{_sysconfdir}/bash_completion.d/zypper.sh
 %{_bindir}/zypper
 %{_bindir}/installation_sources
@@ -95,7 +95,7 @@ rm -rf %{buildroot}%{_docdir}/packages
 %{_datadir}/zypper/xml/xmlout.rnc
 # declare ownership of the log file but prevent
 # it from being erased by rpm -e
-%ghost %config(noreplace) %attr (640,root,root) %{_var}/log/zypper.log
+%ghost %config %attr (640,root,root) %{_var}/log/zypper.log
 
 %files log
 %defattr(-,root,root,-)
