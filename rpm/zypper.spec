@@ -1,8 +1,7 @@
 Name:       zypper
 Summary:    Command line software manager using libzypp
-Version:        1.14.6
+Version:    1.14.38
 Release:    1
-Group:      System/Packages
 License:    GPLv2+
 URL:        http://en.opensuse.org/Zypper
 Source0:    %{name}-%{version}.tar.bz2
@@ -10,14 +9,13 @@ Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
 Patch1:     0001-Fix-obsolete-diff-argument.patch
 Requires:   procps
-BuildRequires:  pkgconfig(libzypp) >= 17.2.2
-BuildRequires:  pkgconfig(augeas) >= 0.5.0
+BuildRequires:  pkgconfig(libzypp) >= 17.24.0
+BuildRequires:  pkgconfig(augeas) >= 1.10.0
 BuildRequires:  boost-devel  >= 1.33.1
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  readline-devel >= 5.1
-BuildRequires:  cmake >= 2.4.6
-BuildRequires:  gcc-c++ >= 4.7
-BuildRequires:  cmake >= 2.4.6
+BuildRequires:  gcc-c++ >= 7
+BuildRequires:  cmake >= 3.1
 BuildRequires:  libxml2-devel
 
 %description
@@ -49,12 +47,7 @@ Requires:   perl
 
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
-
-# 0001-Disable-doc-building-because-it-now-needs-text-tools.patch
-%patch0 -p1
-# 0001-Fix-obsolete-diff-argument.patch
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 
@@ -67,10 +60,9 @@ Requires:   perl
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_TRANSLATION_SET=${TRANSLATION_SET:-zypper}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf %{buildroot}
 %make_install
 %{__install} -d -m755 %buildroot%_var/log
 touch %buildroot%_var/log/zypper.log
@@ -88,6 +80,7 @@ rm -rf %{buildroot}%{_docdir}/packages
 %{_sysconfdir}/bash_completion.d/zypper.sh
 %{_bindir}/zypper
 %{_bindir}/installation_sources
+%{_bindir}/needs-restarting
 %{_sbindir}/zypp-refresh
 %dir %{_datadir}/zypper
 %{_datadir}/zypper/zypper.aug
