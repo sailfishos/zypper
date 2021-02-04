@@ -8,6 +8,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
 Patch1:     0001-Fix-obsolete-diff-argument.patch
+Patch2:     0001-Don-t-log-by-default.patch
 Requires:   procps
 BuildRequires:  pkgconfig(libzypp) >= 17.24.0
 BuildRequires:  pkgconfig(augeas) >= 1.10.0
