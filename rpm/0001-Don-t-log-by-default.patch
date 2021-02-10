@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomi=20Lepp=C3=A4nen?= <tomi.leppanen@jolla.com>
+Date: Wed, 10 Feb 2021 14:13:58 +0200
+Subject: [PATCH] Don't log by default
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Tomi Leppänen <tomi.leppanen@jolla.com>
+---
+ src/main.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.h b/src/main.h
+index 89c3ab4a..21457418 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -44,7 +44,7 @@
+ #define PL_(MSG1,MSG2,N) ::ngettext(MSG1,MSG2,N)
+ 
+ // libzypp logger settings
+-#define ZYPPER_LOG "/var/log/zypper.log"
++#define ZYPPER_LOG ""
+ #undef  ZYPP_BASE_LOGGER_LOGGROUP
+ #define ZYPP_BASE_LOGGER_LOGGROUP "zypper"
+ 
+-- 
+2.29.2
+
