@@ -3,7 +3,7 @@ Summary:    Command line software manager using libzypp
 Version:    1.14.38
 Release:    1
 License:    GPLv2+
-URL:        http://en.opensuse.org/Zypper
+URL:        https://github.com/sailfishos/zypper
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
