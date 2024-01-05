@@ -1,4 +1,4 @@
-From 23074af6aed28ebe8cc2401205afef6bfcce92b7 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Andrew Branson <andrew.branson@jollamobile.com>
 Date: Mon, 25 Jun 2018 11:44:38 +0200
 Subject: [PATCH] Disable doc building because it now needs text tools (a2x or
@@ -13,10 +13,10 @@ Signed-off-by: Juho Hämäläinen <juho.hamalainen@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 19740fdd..bf34f58c 100644
+index 0623d0a83f9985449ab7452b4e8eec72a5a385cb..a9a0204b31415c8e2be69e03920143f545b4c50d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -79,7 +79,7 @@ MACRO(ADD_TESTS)
+@@ -92,7 +92,7 @@ MACRO(ADD_TESTS)
  ENDMACRO(ADD_TESTS)
  
  ADD_SUBDIRECTORY( src )
@@ -25,6 +25,3 @@ index 19740fdd..bf34f58c 100644
  IF ( ENABLE_BUILD_TESTS )
    ADD_SUBDIRECTORY( tests )
  ELSE ( ENABLE_BUILD_TESTS )
--- 
-2.25.1
-

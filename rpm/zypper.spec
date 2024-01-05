@@ -1,16 +1,18 @@
 Name:       zypper
 Summary:    Command line software manager using libzypp
-Version:    1.14.38
+Version:    1.14.68
 Release:    1
 License:    GPLv2+
 URL:        https://github.com/sailfishos/zypper
 Source0:    %{name}-%{version}.tar.bz2
 Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
-Patch1:     0001-Fix-obsolete-diff-argument.patch
-Patch2:     0001-Don-t-log-by-default.patch
+Patch1:     0002-Fix-obsolete-diff-argument.patch
+Patch2:     0003-Don-t-log-by-default.patch
 Requires:   procps
 BuildRequires:  pkgconfig(libzypp) >= 17.24.0
+# TUI library which is built and shipped with libzypp-devel
+BuildRequires:  libzypp-tui-devel >= 1
 BuildRequires:  pkgconfig(augeas) >= 1.10.0
 BuildRequires:  boost-devel  >= 1.33.1
 BuildRequires:  gettext-devel >= 0.15
@@ -78,7 +80,7 @@ rm -rf %{buildroot}%{_docdir}/packages
 %config %{_sysconfdir}/zypp/zypper.conf
 %config %{_sysconfdir}/logrotate.d/zypper.lr
 %config %{_sysconfdir}/logrotate.d/zypp-refresh.lr
-%{_sysconfdir}/bash_completion.d/zypper.sh
+%{_datadir}/bash-completion/completions/zypper
 %{_bindir}/zypper
 %{_bindir}/installation_sources
 %{_bindir}/needs-restarting
