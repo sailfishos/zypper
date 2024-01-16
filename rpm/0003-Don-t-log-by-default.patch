@@ -12,10 +12,10 @@ Signed-off-by: Tomi Leppänen <tomi.leppanen@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/main.h b/src/main.h
-index 89c3ab4a..21457418 100644
+index f71e18fedbc8e95aa78a6530b12ced048e1d1d87..8ecb6e433e6db83d01e822811bd3c2b6e1c6fe30 100644
 --- a/src/main.h
 +++ b/src/main.h
-@@ -44,7 +44,7 @@
+@@ -45,7 +45,7 @@
  #define PL_(MSG1,MSG2,N) ::ngettext(MSG1,MSG2,N)
  
  // libzypp logger settings
@@ -24,6 +24,3 @@ index 89c3ab4a..21457418 100644
  #undef  ZYPP_BASE_LOGGER_LOGGROUP
  #define ZYPP_BASE_LOGGER_LOGGROUP "zypper"
  
--- 
-2.29.2
-
