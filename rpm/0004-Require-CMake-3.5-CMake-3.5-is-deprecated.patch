@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Mon, 7 Oct 2024 23:57:43 +0200
+Subject: [PATCH] Require CMake 3.5, CMake < 3.5 is deprecated.
+
+Commit 37862d7cafe72b176ed2bf757bc9329664e892c6 only
+changed the spec file, not the actual CMakeLists.txt
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a9a0204b31415c8e2be69e03920143f545b4c50d..68de0c95cf7963990304d8afd31db5e3773017f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ PROJECT( ZYPPER C CXX )
+ SET( PACKAGE "zypper" )
+ 

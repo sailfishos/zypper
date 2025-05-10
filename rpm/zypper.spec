@@ -9,6 +9,7 @@ Source1:    %{name}-rpmlintrc
 Patch0:     0001-Disable-doc-building-because-it-now-needs-text-tools.patch
 Patch1:     0002-Fix-obsolete-diff-argument.patch
 Patch2:     0003-Don-t-log-by-default.patch
+Patch3:     0004-Require-CMake-3.5-CMake-3.5-is-deprecated.patch
 Requires:   procps
 BuildRequires:  pkgconfig(libzypp) >= 17.24.0
 # TUI library which is built and shipped with libzypp-devel
@@ -76,7 +77,6 @@ rm -rf %{buildroot}%{_docdir}/packages
 
 %files -f zypper.lang
 %license COPYING
-%defattr(-,root,root,-)
 %config %{_sysconfdir}/zypp/zypper.conf
 %config %{_sysconfdir}/logrotate.d/zypper.lr
 %config %{_sysconfdir}/logrotate.d/zypp-refresh.lr
@@ -94,11 +94,9 @@ rm -rf %{buildroot}%{_docdir}/packages
 %ghost %config %attr (640,root,root) %{_var}/log/zypper.log
 
 %files log
-%defattr(-,root,root,-)
 %{_sbindir}/zypper-log
 
 %files aptitude
-%defattr(-,root,root,-)
 %{_bindir}/aptitude
 %{_bindir}/apt-get
 %{_bindir}/apt
